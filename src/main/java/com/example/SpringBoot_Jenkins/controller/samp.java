@@ -14,4 +14,8 @@ public class samp {
     public String helloworld(){
         return "Hello World";
     }
+    @GetMapping("/helloaaaaaaaa")
+    public String helloworld2(){
+        return "Hello World";
+    }
 }
