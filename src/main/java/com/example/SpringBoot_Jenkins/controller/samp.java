@@ -8,7 +8,7 @@ public class samp {
 
     @GetMapping("/hello")
     public String Hello(){
-        return "Hello World";
+        return "Hello World How are you ";
     }
     @GetMapping("/helloaaaa")
     public String helloworld(){
