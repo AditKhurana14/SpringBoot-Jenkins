@@ -10,12 +10,12 @@ pipeline {
   stages{
       stage('Checkout'){
           steps{
-             git 'https://github.com/AditKhurana14/SpringBoot-Jenkins'
+              checkout scm
           }
       }
       stage('Build'){
           steps{
-              sh 'mvn clean install'
+              bat 'mvn clean install'
           }
       }
   }
