@@ -10,4 +10,8 @@ public class samp {
     public String Hello(){
         return "Hello World";
     }
+    @GetMapping("/hello")
+    public String helloworld(){
+        return "Hello World";
+    }
 }
