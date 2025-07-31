@@ -1,27 +1,29 @@
 pipeline {
     agent any
 
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
 
+        stage('Build & Test') {
+            steps {
+                bat 'mvn clean install'
+            }
+        }
 
-    environment {
-        JAR_NAME = 'target/*.jar'
+        stage('Archive JAR') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            }
+        }
     }
 
-  stages{
-      stage('Checkout'){
-          steps{
-              checkout scm
-          }
-      }
-      stage('Build'){
-          steps{
-              bat 'mvn clean install'
-          }
-      }
-      stage('Test'){
-          steps{
-              bat 'mvn test'
-          }
-      }
-  }
-  }
+    post {
+        success {
+            echo "✅ Build and archive successful."
+        }
+    }
+}
