@@ -24,6 +24,16 @@ pipeline {
                bat 'docker build -t Springboot-Jenkins:latest .'
             }
         }
+        stage('Tag Docker Image  ') {
+            steps {
+                bat 'docker Springboot-Jenkins:latest aditkhurana14/dockerimage '
+            }
+        }
+        stage('Push Docker Image  ') {
+            steps {
+                bat 'docker push aditkhurana14/dockerimage '
+            }
+        }
     }
 
     post {
