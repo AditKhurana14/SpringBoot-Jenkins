@@ -24,6 +24,13 @@ pipeline {
                bat 'mvn clean verify '
             }
         }
+
+        stage('Publish Coverage') {
+            steps {
+                jacoco()
+            }
+        }
+
         stage('Build Docker Image ') {
             steps {
                bat 'docker build -t Springboot-Jenkins:latest .'
