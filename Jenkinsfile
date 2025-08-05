@@ -19,6 +19,11 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
+        stage('Build & Test') {
+            steps {
+               bat 'mvn clean verify '
+            }
+        }
         stage('Build Docker Image ') {
             steps {
                bat 'docker build -t Springboot-Jenkins:latest .'
